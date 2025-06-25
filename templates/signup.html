@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1d3557, #457b9d);
+            color: white;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .form-container {
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        input[type="submit"], button {
+            background-color: #a8dadc;
+            color: #1d3557;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #f1faee;
+        }
+
+        h1 {
+            margin-top: 25px;
+            font-size: 24px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form action="/signupauth" method="post">
+            <input type="submit" value="Sign Up">
+        </form>
+
+        {% if val %}
+        <h1>{{ val }}</h1>
+        {% endif %}
+
+        <form action="/">
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>

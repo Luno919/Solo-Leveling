@@ -1,0 +1,118 @@
+{% extends 'nav_bar.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(135deg, #001f3f, #0074D9);
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+
+    .container {
+        padding: 40px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    h1, h2 {
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 5px #000;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+    }
+
+    th, td {
+        padding: 15px;
+        text-align: center;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    th {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #00faff;
+        font-weight: bold;
+    }
+
+    tr:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    a {
+        color: #00faff;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: #ffffff;
+    }
+
+    .add-task-btn {
+        padding: 14px 28px;
+        background-color: #00faff;
+        color: black;
+        font-weight: bold;
+        border: none;
+        border-radius: 30px;
+        font-size: 18px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .add-task-btn:hover {
+        background-color: #00d4e0;
+        transform: scale(1.05);
+    }
+
+</style>
+
+<h1>Rival</h1>
+<div class="container">
+    <h2>Rival List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if rivals %}
+                {% for rival in rivals %}
+                <tr>
+                    <td>{{ rival.Name }}</td>
+                    <td>{{ rival.desc }}</td>
+                    <td>
+                        <a href="/update_rival/{{ rival._id }}">Update</a>
+                    </td>
+                    <td>
+                        <a href="/delete_rival/{{ rival._id }}">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4">No rivals found.</td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <br>
+    <a href="/addRivalPage"><button class="add-task-btn">+ Add Rival</button></a>
+</div>
+{% endblock %}

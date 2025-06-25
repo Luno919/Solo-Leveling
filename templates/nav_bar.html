@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Navbar Example</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 15px 20px;
+      box-shadow: 0 0 15px #00faff;
+      border-radius: 0 0 10px 10px;
+      flex-wrap: wrap;
+    }
+
+    .navbar a {
+      color: #00faff;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 10px;
+      border-radius: 8px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .navbar a:hover {
+      background-color: #00faff;
+      color: #000;
+    }
+
+    .navbar a.active {
+      background-color: #00faff;
+      color: #000;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 25px;
+      height: 3px;
+      background-color: #00faff;
+      margin: 4px 0;
+      transition: 0.4s;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        margin-top: 10px;
+      }
+
+      .nav-links a {
+        margin: 10px 0;
+        text-align: center;
+      }
+
+      .navbar.responsive .nav-links {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar" id="navbar">
+    <div class="hamburger" onclick="toggleNavbar()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="nav-links">
+      <a href="/home" class="{% if active_page == 'home' %}active{% endif %}">Home</a>
+      <a href="/daily_task" class="{% if active_page == 'daily_task' %}active{% endif %}">Daily_Task</a>
+      <a href="/quest" class="{% if active_page == 'quest' %}active{% endif %}">Quest</a>
+      <a href="/Rival" class="{% if active_page == 'dynamic' %}active{% endif %}">Rival</a>
+    </div>
+  </div>
+
+  {% block content %}{% endblock %}
+
+  <script>
+    function toggleNavbar() {
+      document.getElementById("navbar").classList.toggle("responsive");
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+{% extends 'nav_bar.html' %}
+
+{% block content %}
+<style>
+    body {
+        background: linear-gradient(45deg, #001f3f, #0074D9);
+        color: #fff;
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+
+    .container {
+        padding: 30px;
+    }
+
+    table {
+        margin: 0 auto;
+        border-collapse: collapse;
+        width: 80%;
+        background-color: rgba(0, 0, 0, 0.6);
+        box-shadow: 0 0 10px #00faff;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 15px;
+        border: 1px solid #00faff;
+        color: #fff;
+        font-size: 16px;
+    }
+
+    th {
+        background-color: #0074D9;
+    }
+
+    tr:nth-child(even) {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .add-task-btn {
+        padding: 15px 25px;
+        border: none;
+        border-radius: 10px;
+        background-color: #00faff;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+</style>
+
+<div class="container">
+    <h2>Daily Task Status</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Done</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for task, status in tasks.items() %}
+                {% if task != "_id" and task != "uid" %}
+                <tr>
+                    <td>{{ task }}</td>
+                    <td>
+                        <form method="POST" action="/update_daily_task/{{task}}">
+                            <input type="checkbox" name="done" value="1" {% if status == 1 %}checked{% endif %} onchange="this.form.submit()">
+                        </form>
+                    </td>
+                  
+                </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+</div>
+{% endblock %}
