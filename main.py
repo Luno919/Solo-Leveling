@@ -1,4 +1,4 @@
-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
+APIKEY=OPEN_ROUTER_API_KEY
 import requests
 import json
 import re
