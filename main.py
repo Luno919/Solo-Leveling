@@ -32,9 +32,9 @@ def parse_challenge_text(raw_text):
     }
 def dynamic_quest(quests="",skills="good communication, good listening , daring"):
     query = f'''
-I want to Learn skills {skills} give me a challenge  in the format  
+I want to Learn skills {skills}  give me a challenge from only one skill from the skills i gave you  in the format  
 and  there is no person  interact but i can use the Ai tools give Challenge only for today and a single task only  only one challenge
-and those challenge should improve me scientifically 
+and those challenge should improve me scientifically . write the description in simple english 
 <challenge>
 <Title> </Title>
 <Description>   </Description> 
